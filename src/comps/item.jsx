@@ -24,8 +24,16 @@ export default function Item({ title, price, image, id }) {
           price: price,
           image: image,
           id: id,
+          quantity: 1,
         },
       ]);
+    } else {
+      const clone = structuredClone(currentCart);
+      const index = clone.findIndex((item) => item.id === id);
+
+      clone[index].quantity += 1;
+
+      updateCart(clone);
     }
   };
 

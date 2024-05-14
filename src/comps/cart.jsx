@@ -8,7 +8,7 @@ export default function Cart({ status }) {
   const getTotalPrice = function () {
     let currentPrice = 0;
     currentCart.forEach((item) => {
-      currentPrice = currentPrice + item.price;
+      currentPrice = currentPrice + item.price * item.quantity;
     });
     return currentPrice;
   };
@@ -31,6 +31,7 @@ export default function Cart({ status }) {
               image={item.image}
               price={item.price}
               id={item.id}
+              quantity={item.quantity}
             ></CartItem>
           );
         })}
